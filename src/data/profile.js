@@ -9,7 +9,7 @@ export const profile = {
   location: 'Malang, Indonesia',
   timezone: 'Asia/Jakarta',
   email: 'nabielyandra@gmail.com',
-  url: 'https://nabiel-portofolio-five.vercel.app',
+  url: 'https://nabielyr.github.io',
 
   // Responsive profile photo (WebP at two widths)
   photo: {

@@ -48,8 +48,8 @@ export const projects = [
     tech: ['React', 'Three.js', 'Framer Motion', 'Vite'],
     image: '/projects/portfolio.webp', // Hoo asleep, as he is by day
     imageNight: '/projects/portfolio-night.webp', // shown in the dark theme: he's up at night
-    github: 'https://github.com/nabielyr/nabiel-portofolio',
-    demo: 'https://nabiel-portofolio-five.vercel.app/',
+    github: 'https://github.com/nabielyr/nabielyr.github.io',
+    demo: 'https://nabielyr.github.io/',
     year: 2026,
   },
   {

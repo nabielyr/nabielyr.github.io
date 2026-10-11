@@ -1,8 +1,8 @@
-# nabiel-portofolio
+# nabielyr.github.io
 
 My personal portfolio. It's where I keep track of what I'm learning, where I've contributed, and the things I build.
 
-▶ **Visit it here: [nabiel-portofolio-five.vercel.app](https://nabiel-portofolio-five.vercel.app/)**
+▶ **Visit it here: [nabielyr.github.io](https://nabielyr.github.io/)**
 
 ![The hero: my name, a short intro, a navy owl sitting on a stack of books, and a split-flap ticker along the bottom](public/projects/portfolio.webp)
 
@@ -26,7 +26,7 @@ It's fully bilingual (English and Bahasa Indonesia) and has both a dark and a li
 - [Framer Motion](https://motion.dev/) for the small reveal animations
 - [Lenis](https://lenis.darkroom.engineering/) for smooth scrolling
 - Plain CSS Modules with design tokens (no CSS framework)
-- Hosted on [Vercel](https://vercel.com/)
+- Hosted on [GitHub Pages](https://pages.github.com/)
 
 ## Keeping it smooth
 
