@@ -11,10 +11,10 @@ export const profile = {
   email: 'nabielyandra@gmail.com',
   url: 'https://nabielyr.github.io',
 
-  // Responsive profile photo (WebP at two widths)
+  // Responsive profile photo (WebP at two widths, cropped to 4:5 for the frame)
   photo: {
-    src: '/images/profile-800.webp',
-    srcSet: '/images/profile-480.webp 480w, /images/profile-800.webp 800w',
+    src: '/images/nabiel-800.webp',
+    srcSet: '/images/nabiel-480.webp 480w, /images/nabiel-800.webp 800w',
   },
 
   /**

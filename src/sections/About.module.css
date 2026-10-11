@@ -31,7 +31,7 @@
   height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  object-position: center 12%;
+  object-position: center;
   border: 1.5px solid var(--ink);
   border-radius: 999px 999px 18px 18px;
   background: #e9e3d8;
