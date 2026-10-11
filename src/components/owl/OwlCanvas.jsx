@@ -92,6 +92,45 @@ function Framing({ mode, unitPx, scene, anchor, viewRef }) {
   return null
 }
 
+/**
+ * Holds the owl still while the page scrolls. A new canvas frame on every
+ * scrolled frame kept the integrated GPU busy compositing (Present stalls of
+ * 10-15ms at 144Hz, worst with middle-click autoscroll); a still canvas is
+ * just a texture the compositor moves. `resume` is the frameloop to go back to.
+ */
+const SCROLL_REST_MS = 150
+
+function PauseWhileScrolling({ resume }) {
+  const setFrameloop = useThree((s) => s.setFrameloop)
+  const invalidate = useThree((s) => s.invalidate)
+  useEffect(() => {
+    if (resume === 'never') return undefined
+    let timer = 0
+    let paused = false
+    const onScroll = () => {
+      if (!paused) {
+        paused = true
+        setFrameloop('never')
+      }
+      clearTimeout(timer)
+      timer = setTimeout(() => {
+        paused = false
+        setFrameloop(resume)
+        invalidate()
+      }, SCROLL_REST_MS)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    // No restore here: when `resume` changes (e.g. the owl scrolled off screen),
+    // the Canvas has already applied the new frameloop, and putting back the
+    // old one kept an off-screen owl rendering
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      clearTimeout(timer)
+    }
+  }, [resume, setFrameloop, invalidate])
+  return null
+}
+
 /** Window-level pointer, so the owl can watch the cursor anywhere on the page */
 function usePointer() {
   const pointer = useRef({ x: 0, y: 0, lastMove: -Infinity })
@@ -260,6 +299,7 @@ function OwlCanvas({
           />
         </group>
         <AdaptiveDpr />
+        <PauseWhileScrolling resume={frameloop} />
       </Canvas>
       {/* floating "z"s while it sleeps; Owl moves this to the top of its head every frame */}
       {asleep && (
