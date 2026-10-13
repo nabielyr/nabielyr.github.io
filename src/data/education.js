@@ -6,6 +6,7 @@ export const education = [
     faculty: { en: 'Faculty of Computer Science (FILKOM)', id: 'Fakultas Ilmu Komputer (FILKOM)' },
     degree: { en: 'Bachelor of Information Systems', id: 'Sarjana Sistem Informasi' },
     period: { en: '2024 - Present', id: '2024 - Sekarang' },
+    gpa: '3.90 / 4.00',
     affiliations: [
       {
         id: 'is-lab',
@@ -21,6 +22,11 @@ export const education = [
         id: 'sge',
         name: 'SGE FILKOM UB',
         logo: '/images/logo-sge.webp',
+      },
+      {
+        id: 'gdgoc',
+        name: 'GDGoC Brawijaya',
+        logo: '/images/logo-gdgoc.svg',
       },
     ],
     description: {

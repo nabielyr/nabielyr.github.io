@@ -63,6 +63,7 @@ const en = {
     education: 'Education',
     year: 'Year',
     of: 'of',
+    gpa: 'GPA',
   },
   skills: {
     kicker: 'Toolkit',

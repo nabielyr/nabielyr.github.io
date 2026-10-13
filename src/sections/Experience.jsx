@@ -44,6 +44,11 @@ export default function Experience() {
               <p className={styles.org}>
                 {pick(edu.degree)} · {pick(edu.faculty)}
               </p>
+              {edu.gpa && (
+                <p className={`${styles.org} ${styles.gpa}`}>
+                  {t('experience.gpa')} {edu.gpa}
+                </p>
+              )}
               <div className={styles.progress} aria-label={`${t('experience.year')} ${progress.current} ${t('experience.of')} ${progress.total}`}>
                 <span className={styles.bar}>
                   <span style={{ transform: `scaleX(${progress.ratio})` }} />

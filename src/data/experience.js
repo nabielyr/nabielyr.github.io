@@ -4,6 +4,20 @@
  */
 export const experience = [
   {
+    id: 'gdgoc-ub',
+    role: { en: 'Member', id: 'Anggota' },
+    org: 'Google Developer Groups on Campus · Brawijaya University',
+    logo: '/images/logo-gdgoc.svg',
+    start: { en: 'Oct 2024', id: 'Okt 2024' },
+    end: { en: 'Present', id: 'Sekarang' },
+    current: true,
+    description: {
+      en: "Active member of Google's on-campus developer community at Brawijaya University, taking part in technology learning sessions, workshops, and developer activities.",
+      id: 'Anggota aktif komunitas developer kampus dari Google di Universitas Brawijaya, mengikuti sesi belajar teknologi, workshop, dan kegiatan developer.',
+    },
+    tags: ['GDGoC', 'Developer Community', 'Workshops'],
+  },
+  {
     id: 'finance-bet',
     role: { en: 'Staff of Finance & Sponsorship', id: 'Staf Keuangan & Sponsorship' },
     org: 'Brawijaya English Tournament (BET) · FORMASI UB',

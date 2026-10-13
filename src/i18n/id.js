@@ -63,6 +63,7 @@ const id = {
     education: 'Pendidikan',
     year: 'Tahun',
     of: 'dari',
+    gpa: 'IPK',
   },
   skills: {
     kicker: 'Toolkit',
