@@ -351,6 +351,11 @@ export default function Owl({
 
   // Let the parent trigger reactions (click / double click / hover / food)
   useImperativeHandle(ref, () => ({
+    /** Flying in, hopping or still settling from a landing: must not be held still */
+    moving() {
+      const st = s.current
+      return (st.intro >= 0 && ready) || st.hopY > 0 || Math.abs(st.dipV) > 0.02 || st.dipY < -0.005
+    },
     /** returns true when the click woke it up */
     hop() {
       const st = s.current

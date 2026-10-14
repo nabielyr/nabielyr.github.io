@@ -91,11 +91,12 @@ export default function Contact() {
   const time = useMalangTime()
   const [sectionEl, setSectionEl] = useState(null)
   const [letterEl, setLetterEl] = useState(null)
-  // Build the scene well before it's needed: when the section is within a few
-  // screens, or quietly once the hero owl has settled. Start the flight as
-  // soon as the title comes up into view.
+  // Build the scene well before it's needed: quietly once the hero owl has
+  // landed (creating the canvas is one ~60-90ms task, better spent while the
+  // reader is still on the hero than mid-scroll), or when the section is within
+  // a few screens. Start the flight as soon as the title comes up into view.
   const near = useSeen(sectionEl, '3000px')
-  const idle = useIdleAfter(9000)
+  const idle = useIdleAfter(4500)
   const titleInView = useSeen(letterEl, '0px 0px -10% 0px')
   const [OwlCanvas, setOwlCanvas] = useState(loadedOwlCanvas)
   useEffect(() => {

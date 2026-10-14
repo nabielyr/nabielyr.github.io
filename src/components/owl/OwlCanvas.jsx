@@ -8,6 +8,12 @@ import styles from './OwlCanvas.module.css'
 const DPR = [1, 1.75]
 // Light-weight scene; the integrated GPU is plenty and avoids an adapter switch
 const GL = { antialias: true, alpha: true, powerPreference: 'default' }
+// Measure the canvas on resize only. R3F's default also listens to scroll with a
+// 50ms debounce, and its ResizeObserver shares that debounced callback: while the
+// page kept scrolling the size stayed 0, so the contact owl's canvas was only
+// created (and its shaders compiled) once the scroll stopped, right as it flew in.
+// Pointer positions come from getBoundingClientRect in `compute`, not from size.
+const MEASURE = { scroll: false, debounce: { scroll: 0, resize: 0 } }
 const FOV = 30
 const CAMERA = { position: [0, 0, 8], fov: FOV }
 
@@ -97,10 +103,12 @@ function Framing({ mode, unitPx, scene, anchor, viewRef }) {
  * scrolled frame kept the integrated GPU busy compositing (Present stalls of
  * 10-15ms at 144Hz, worst with middle-click autoscroll); a still canvas is
  * just a texture the compositor moves. `resume` is the frameloop to go back to.
+ * Never while the owl is flying in, landing or hopping (`owl.moving()`): held
+ * still then, it froze in mid-air for as long as the page kept gliding.
  */
 const SCROLL_REST_MS = 150
 
-function PauseWhileScrolling({ resume }) {
+function PauseWhileScrolling({ resume, owl }) {
   const setFrameloop = useThree((s) => s.setFrameloop)
   const invalidate = useThree((s) => s.invalidate)
   useEffect(() => {
@@ -108,6 +116,15 @@ function PauseWhileScrolling({ resume }) {
     let timer = 0
     let paused = false
     const onScroll = () => {
+      if (owl.current?.moving()) {
+        if (paused) {
+          paused = false
+          setFrameloop(resume)
+          invalidate()
+        }
+        clearTimeout(timer)
+        return
+      }
       if (!paused) {
         paused = true
         setFrameloop('never')
@@ -127,7 +144,7 @@ function PauseWhileScrolling({ resume }) {
       window.removeEventListener('scroll', onScroll)
       clearTimeout(timer)
     }
-  }, [resume, setFrameloop, invalidate])
+  }, [resume, owl, setFrameloop, invalidate])
   return null
 }
 
@@ -256,6 +273,7 @@ function OwlCanvas({
       <Canvas
         dpr={DPR}
         gl={GL}
+        resize={MEASURE}
         camera={CAMERA}
         frameloop={frameloop}
         onCreated={onCreated}
@@ -299,7 +317,7 @@ function OwlCanvas({
           />
         </group>
         <AdaptiveDpr />
-        <PauseWhileScrolling resume={frameloop} />
+        <PauseWhileScrolling resume={frameloop} owl={owl} />
       </Canvas>
       {/* floating "z"s while it sleeps; Owl moves this to the top of its head every frame */}
       {asleep && (
