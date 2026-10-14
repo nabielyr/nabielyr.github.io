@@ -47,6 +47,41 @@ function useIdleAfter(ms) {
   return done
 }
 
+// how long the page must sit still before the owl's canvas is created
+const STILL_MS = 300
+
+/**
+ * Runs `fn` once the page has stopped scrolling for a moment and the browser
+ * is idle. Creating a WebGL canvas waits on the GPU (context, then three.js
+ * asking for its limits and extensions): ~60ms with the page at rest, over
+ * 120ms mid-scroll at 144Hz, where it showed as a frozen frame.
+ */
+function whenStill(fn) {
+  let timer = 0
+  let idleId = 0
+  const run = () => {
+    window.removeEventListener('scroll', wait)
+    fn()
+  }
+  const settled = () => {
+    if ('requestIdleCallback' in window) idleId = window.requestIdleCallback(run, { timeout: 1000 })
+    else run()
+  }
+  function wait() {
+    clearTimeout(timer)
+    if (idleId) window.cancelIdleCallback(idleId)
+    idleId = 0
+    timer = setTimeout(settled, STILL_MS)
+  }
+  window.addEventListener('scroll', wait, { passive: true })
+  wait()
+  return () => {
+    clearTimeout(timer)
+    if (idleId) window.cancelIdleCallback(idleId)
+    window.removeEventListener('scroll', wait)
+  }
+}
+
 // Big Shoulders Display: the cap line sits this far (in em) below the top of
 // an inline span's box (ascent 0.984 - cap height 0.8125)
 const CAP_GAP = 0.1715
@@ -91,10 +126,10 @@ export default function Contact() {
   const time = useMalangTime()
   const [sectionEl, setSectionEl] = useState(null)
   const [letterEl, setLetterEl] = useState(null)
-  // Build the scene well before it's needed: quietly once the hero owl has
-  // landed (creating the canvas is one ~60-90ms task, better spent while the
-  // reader is still on the hero than mid-scroll), or when the section is within
-  // a few screens. Start the flight as soon as the title comes up into view.
+  // Build the scene well before it's needed: once the hero owl has landed, or
+  // when the section is within a few screens, and either way only while the
+  // page is still (see whenStill). Start the flight as soon as the title comes
+  // up into view.
   const near = useSeen(sectionEl, '3000px')
   const idle = useIdleAfter(4500)
   const titleInView = useSeen(letterEl, '0px 0px -10% 0px')
@@ -103,9 +138,10 @@ export default function Contact() {
     if (!(near || idle) || OwlCanvas) return undefined
     let alive = true
     // a function in state must be wrapped, or React would call it
-    prepareOwl().then((C) => alive && C && setOwlCanvas(() => C))
+    const cancel = whenStill(() => prepareOwl().then((C) => alive && C && setOwlCanvas(() => C)))
     return () => {
       alive = false
+      cancel()
     }
   }, [near, idle, OwlCanvas])
   const stage = useStage(sectionEl, letterEl)

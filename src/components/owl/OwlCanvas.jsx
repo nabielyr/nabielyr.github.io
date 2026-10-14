@@ -263,6 +263,9 @@ function OwlCanvas({
     // tell the custom cursor this is clickable (the canvas itself ignores the pointer)
     const target = eventSource ?? wrap.current
     target?.toggleAttribute('data-cursor', v)
+    // clicks on the owl reach the text under it (TOUCH, the name), where a
+    // double click selected a word; global.css turns selection off meanwhile
+    target?.toggleAttribute('data-owl-hover', v)
   }
 
   let frameloop = 'never'
