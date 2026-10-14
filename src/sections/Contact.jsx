@@ -47,38 +47,50 @@ function useIdleAfter(ms) {
   return done
 }
 
-// how long the page must sit still before the owl's canvas is created
-const STILL_MS = 300
+// The page counts as still after STILL_MS with no scrolling faster than
+// STILL_SPEED (px/ms): the long, slow tail of a smooth-scroll glide is still
+// enough, and waiting it out made Hoo show up over a second late
+const STILL_MS = 120
+const STILL_SPEED = 0.2
 
 /**
- * Runs `fn` once the page has stopped scrolling for a moment and the browser
- * is idle. Creating a WebGL canvas waits on the GPU (context, then three.js
+ * Runs `fn` once the page has (all but) stopped scrolling and the browser is
+ * idle. Creating a WebGL canvas waits on the GPU (context, then three.js
  * asking for its limits and extensions): ~60ms with the page at rest, over
  * 120ms mid-scroll at 144Hz, where it showed as a frozen frame.
  */
 function whenStill(fn) {
   let timer = 0
   let idleId = 0
+  let lastY = window.scrollY
+  let lastT = performance.now()
   const run = () => {
-    window.removeEventListener('scroll', wait)
+    window.removeEventListener('scroll', onScroll)
     fn()
   }
   const settled = () => {
-    if ('requestIdleCallback' in window) idleId = window.requestIdleCallback(run, { timeout: 1000 })
+    if ('requestIdleCallback' in window) idleId = window.requestIdleCallback(run, { timeout: 200 })
     else run()
   }
-  function wait() {
+  const wait = () => {
     clearTimeout(timer)
     if (idleId) window.cancelIdleCallback(idleId)
     idleId = 0
     timer = setTimeout(settled, STILL_MS)
   }
-  window.addEventListener('scroll', wait, { passive: true })
+  function onScroll() {
+    const now = performance.now()
+    const speed = Math.abs(window.scrollY - lastY) / Math.max(1, now - lastT)
+    lastY = window.scrollY
+    lastT = now
+    if (speed > STILL_SPEED) wait()
+  }
+  window.addEventListener('scroll', onScroll, { passive: true })
   wait()
   return () => {
     clearTimeout(timer)
     if (idleId) window.cancelIdleCallback(idleId)
-    window.removeEventListener('scroll', wait)
+    window.removeEventListener('scroll', onScroll)
   }
 }
 
@@ -126,12 +138,12 @@ export default function Contact() {
   const time = useMalangTime()
   const [sectionEl, setSectionEl] = useState(null)
   const [letterEl, setLetterEl] = useState(null)
-  // Build the scene well before it's needed: once the hero owl has landed, or
+  // Build the scene well before it's needed: once the hero owl has landed (~2.6s), or
   // when the section is within a few screens, and either way only while the
   // page is still (see whenStill). Start the flight as soon as the title comes
   // up into view.
   const near = useSeen(sectionEl, '3000px')
-  const idle = useIdleAfter(4500)
+  const idle = useIdleAfter(3000)
   const titleInView = useSeen(letterEl, '0px 0px -10% 0px')
   const [OwlCanvas, setOwlCanvas] = useState(loadedOwlCanvas)
   useEffect(() => {
