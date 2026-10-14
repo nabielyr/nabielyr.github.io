@@ -52,6 +52,8 @@ const id = {
     ],
     honorLabel: 'Prestasi',
     honor: 'Skor tertinggi, Olimpiade Bahasa Inggris Nasional (OBBIE-TN 2023)',
+    competitionLabel: 'Lomba',
+    competition: 'Peserta, Lomba Business Model Canvas Nasional (BEFound 2025)',
     caption: 'Ini saya.',
   },
   experience: {

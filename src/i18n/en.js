@@ -52,6 +52,8 @@ const en = {
     ],
     honorLabel: 'Achievement',
     honor: 'Top 1 score, National English Olympiad (OBBIE-TN 2023)',
+    competitionLabel: 'Competition',
+    competition: 'Participant, National Business Model Canvas Competition (BEFound 2025)',
     caption: "That's me.",
   },
   experience: {

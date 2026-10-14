@@ -48,6 +48,10 @@ export default function About() {
                   {t('about.honor')}
                 </dd>
               </div>
+              <div className={styles.fact}>
+                <dt>{t('about.competitionLabel')}</dt>
+                <dd>{t('about.competition')}</dd>
+              </div>
             </dl>
           </div>
         </div>
