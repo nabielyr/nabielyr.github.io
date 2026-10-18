@@ -42,7 +42,7 @@ const id = {
     kicker: 'Tentang',
     title: 'Tentang saya',
     p1: 'Saya Nabiel, mahasiswa Sistem Informasi di Brawijaya University, Malang. Saya senang membuat hal yang mengubah data yang berantakan jadi berguna, entah hasilnya model, analisis, atau aplikasi web kecil.',
-    p2: 'Sebagian besar minggu saya terbagi antara kuliah dan Intelligent System Laboratory, tempat saya menjadi resident sekaligus asisten praktikum. Menjelaskan kode ke 49 mahasiswa sejauh ini membuat saya belajar menulis kode yang mudah diikuti orang lain.',
+    p2: 'Sebagian besar minggu saya terbagi antara kuliah dan Intelligent System Laboratory, tempat saya menjadi resident sekaligus asisten praktikum. Menjelaskan kode ke mahasiswa sejauh ini membuat saya belajar menulis kode yang mudah diikuti orang lain.',
     facts: [
       { label: 'Tinggal di', value: 'Malang, Indonesia' },
       { label: 'Kuliah', value: 'Sistem Informasi, Brawijaya University' },
