@@ -24,6 +24,20 @@
  */
 export const projects = [
   {
+    id: 'what-gets-starred',
+    title: 'What Gets Starred',
+    category: 'data-science',
+    description: {
+      en: "What makes a GitHub repo popular? 4,000 repos sampled through the GitHub API, analyzed and turned into a Streamlit dashboard that can also score your README. Almost half of the repos with 1,000+ stars turned out to be unmaintained.",
+      id: "Apa yang membuat repo GitHub populer? 4.000 repo diambil lewat GitHub API, dianalisis, lalu dijadikan dashboard Streamlit yang juga bisa menilai README kamu. Ternyata hampir setengah repo dengan 1.000+ star sudah tidak dirawat lagi.",
+    },
+    tech: ['Python', 'GitHub API', 'scikit-learn', 'Streamlit'],
+    image: '/projects/what-gets-starred.webp',
+    github: 'https://github.com/nabielyr/what-gets-starred',
+    demo: 'https://what-gets-starred.streamlit.app/',
+    year: 2026,
+  },
+  {
     id: 'letterfall',
     title: 'Letterfall',
     category: 'fun',
@@ -95,21 +109,6 @@ export const projects = [
     coursework: true,
     demo: '',
     year: 2026,
-  },
-  {
-    id: 'what-gets-starred',
-    title: 'What Gets Starred',
-    category: 'data-science',
-    description: {
-      en: "What makes a GitHub repo popular? A resumable pipeline that samples about 4,000 repos through the GitHub API, with the analysis and a Streamlit dashboard still to come.",
-      id: "Apa yang membuat repo GitHub populer? Pipeline yang mengambil sampel sekitar 4.000 repo lewat GitHub API, dengan analisis dan dashboard Streamlit yang menyusul.",
-    },
-    tech: ['Python', 'GitHub API', 'SQLite', 'pytest'],
-    image: '',
-    github: 'https://github.com/nabielyr/what-gets-starred',
-    demo: '',
-    year: 2026,
-    status: 'in-progress',
   },
 ]
 
