@@ -110,6 +110,21 @@ export const projects = [
     demo: '',
     year: 2026,
   },
+  {
+    id: 'kanbai',
+    title: 'KanbAI',
+    category: ['web-dev', 'ai-ml'],
+    description: {
+      en: "A kanban board with a \"Chunk it\" button that asks an AI to break a big task into small, concrete subtasks you can edit before saving. Just started: the Next.js app is set up and the board comes next.",
+      id: "Papan kanban dengan tombol \"Chunk it\" yang meminta AI memecah tugas besar jadi subtask kecil dan konkret, yang bisa diedit dulu sebelum disimpan. Baru dimulai: aplikasi Next.js-nya sudah disiapkan, papannya menyusul.",
+    },
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Gemini API'],
+    image: '',
+    github: 'https://github.com/nabielyr/kanbai',
+    demo: '',
+    year: 2026,
+    status: 'in-progress',
+  },
 ]
 
 /** All categories a project belongs to (`category` may be a string or an array). */
