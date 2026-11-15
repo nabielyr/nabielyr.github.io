@@ -24,6 +24,20 @@
  */
 export const projects = [
   {
+    id: 'orange-kois',
+    title: 'Orange Kois',
+    category: 'fun',
+    description: {
+      en: "A pixel-art koi pond theme for the Code tab of the Claude desktop app. Seven koi swim curved routes that never cross between amber lily pads, all in one SVG moved only by CSS animation.",
+      id: "Tema kolam koi pixel art untuk tab Code di aplikasi desktop Claude. Tujuh koi berenang di jalur melengkung yang tidak pernah bersilangan di antara daun teratai, semuanya dalam satu SVG yang hanya digerakkan animasi CSS.",
+    },
+    tech: ['TypeScript', 'SVG', 'CSS animation', 'Claude Code plugin'],
+    image: '/projects/orange-kois.webp',
+    github: 'https://github.com/nabielyr/orange-kois',
+    demo: '',
+    year: 2026,
+  },
+  {
     id: 'what-gets-starred',
     title: 'What Gets Starred',
     category: 'data-science',
