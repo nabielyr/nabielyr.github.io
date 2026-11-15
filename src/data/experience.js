@@ -1,6 +1,7 @@
 /**
  * Work & organizational experience (chronological order: past to present).
- * Every text field has `en` and `id` versions.
+ * Every text field has `en` and `id` versions. `current: true` shows a "Now"
+ * badge; `upcoming: true` an "Incoming" one, for something that hasn't started.
  */
 export const experience = [
   {
@@ -83,5 +84,19 @@ export const experience = [
       id: 'Membimbing 8 mahasiswa kelas internasional dalam sesi praktikum yang sepenuhnya berbahasa Inggris melalui Intelligent System Laboratory. Memandu mahasiswa memahami alur kerja BPMN dan dasar web development menggunakan PHP, sekaligus mengawasi latihan praktikum.',
     },
     tags: ['English', 'BPMN', 'PHP', 'Teaching Assistant'],
+  },
+  {
+    id: 'telkom-pkl',
+    role: { en: 'Intern', id: 'Magang (PKL)' },
+    org: 'PT Telkom Indonesia (Persero) Tbk · Witel Riau, Pekanbaru',
+    logo: '/images/logo-telkom.webp',
+    start: { en: 'Jan 2027', id: 'Jan 2027' },
+    end: { en: 'Mar 2027', id: 'Mar 2027' },
+    upcoming: true,
+    description: {
+      en: "A two-month internship (Praktik Kerja Lapangan) in the Shared Service & General Support unit of Telkom's Riau regional office, working on site in Pekanbaru. The focus is applying data analytics and AI to telecom operations; the project will be set once it starts.",
+      id: 'Magang (Praktik Kerja Lapangan) selama dua bulan di unit Shared Service & General Support, Telkom Witel Riau, di kantor Pekanbaru. Fokusnya penerapan data analytics dan AI pada operasional telekomunikasi; proyeknya ditentukan setelah magang dimulai.',
+    },
+    tags: ['Telkom Indonesia', 'Data Analytics', 'AI', 'Internship'],
   },
 ]

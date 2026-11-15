@@ -35,6 +35,12 @@
   background: var(--accent);
 }
 
+/* not started yet: an empty ring */
+.soon {
+  background: none;
+  border: 1.5px solid var(--accent);
+}
+
 .role {
   display: flex;
   align-items: center;

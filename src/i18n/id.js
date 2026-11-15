@@ -60,6 +60,7 @@ const id = {
     kicker: 'Latar belakang',
     title: 'Pendidikan & pengalaman',
     now: 'Aktif',
+    upcoming: 'Akan datang',
     to: 'sampai',
     work: 'Pengalaman',
     education: 'Pendidikan',

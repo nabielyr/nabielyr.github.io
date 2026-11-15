@@ -82,6 +82,12 @@ export default function Experience() {
                     {t('experience.now')}
                   </span>
                 )}
+                {item.upcoming && (
+                  <span className={styles.now}>
+                    <span className={`${styles.nowDot} ${styles.soon}`} aria-hidden="true" />
+                    {t('experience.upcoming')}
+                  </span>
+                )}
               </p>
               <div className={styles.what}>
                 <h3 className={styles.role}>{pick(item.role)}</h3>

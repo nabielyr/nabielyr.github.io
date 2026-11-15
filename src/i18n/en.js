@@ -60,6 +60,7 @@ const en = {
     kicker: 'Background',
     title: 'Education & experience',
     now: 'Now',
+    upcoming: 'Incoming',
     to: 'to',
     work: 'Experience',
     education: 'Education',
