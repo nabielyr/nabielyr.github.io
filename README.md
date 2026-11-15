@@ -83,3 +83,7 @@ Every push to `main` is deployed to GitHub Pages automatically (`.github/workflo
 - LinkedIn: [in/nabiel-yandra](https://linkedin.com/in/nabiel-yandra)
 - GitHub: [@nabielyr](https://github.com/nabielyr)
 - Linktree: [linktr.ee/nabielyandra](https://linktr.ee/nabielyandra)
+
+## License
+
+The code is under the [MIT License](LICENSE), so feel free to learn from it or reuse parts of it. My photo, my CV and the logos of the organisations I've worked with are not part of that.
