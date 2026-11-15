@@ -52,10 +52,14 @@ function useIdleAfter(ms) {
 // enough, and waiting it out made Hoo show up over a second late
 const STILL_MS = 120
 const STILL_SPEED = 0.2
+// ...and the pointer has rested this long: moving it drives things on screen
+// (the hero sky's wind and clouds, Hoo's gaze), and the WebGL set-up landing
+// mid-gesture held up one frame of them, ~3s after the page opened
+const POINTER_QUIET_MS = 800
 
 /**
- * Runs `fn` once the page has (all but) stopped scrolling and the browser is
- * idle. Creating a WebGL canvas waits on the GPU (context, then three.js
+ * Runs `fn` once the page has (all but) stopped scrolling, the pointer has
+ * rested and the browser is idle. Creating a WebGL canvas waits on the GPU (context, then three.js
  * asking for its limits and extensions): ~60ms with the page at rest, over
  * 120ms mid-scroll at 144Hz, where it showed as a frozen frame.
  */
@@ -64,11 +68,22 @@ function whenStill(fn) {
   let idleId = 0
   let lastY = window.scrollY
   let lastT = performance.now()
-  const run = () => {
+  let lastPointer = -Infinity
+  const stopListening = () => {
     window.removeEventListener('scroll', onScroll)
+    window.removeEventListener('pointermove', onPointer)
+    window.removeEventListener('pointerdown', onPointer)
+  }
+  const run = () => {
+    stopListening()
     fn()
   }
   const settled = () => {
+    const quiet = performance.now() - lastPointer
+    if (quiet < POINTER_QUIET_MS) {
+      timer = setTimeout(settled, POINTER_QUIET_MS - quiet)
+      return
+    }
     if ('requestIdleCallback' in window) idleId = window.requestIdleCallback(run, { timeout: 200 })
     else run()
   }
@@ -85,12 +100,19 @@ function whenStill(fn) {
     lastT = now
     if (speed > STILL_SPEED) wait()
   }
+  function onPointer() {
+    lastPointer = performance.now()
+    // an idle callback already queued would still land mid-gesture
+    if (idleId) wait()
+  }
   window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('pointermove', onPointer, { passive: true })
+  window.addEventListener('pointerdown', onPointer, { passive: true })
   wait()
   return () => {
     clearTimeout(timer)
     if (idleId) window.cancelIdleCallback(idleId)
-    window.removeEventListener('scroll', onScroll)
+    stopListening()
   }
 }
 
