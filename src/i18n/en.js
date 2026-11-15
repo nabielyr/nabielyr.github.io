@@ -1,6 +1,6 @@
 const en = {
   meta: {
-    title: 'Muhammad Nabiel Yandra Portofolio',
+    title: 'Muhammad Nabiel Yandra Portfolio',
   },
   nav: {
     projects: 'Work',
@@ -15,6 +15,7 @@ const en = {
     theme: 'Switch between light and dark',
     lang: 'Switch language',
     home: 'Back to the top',
+    skip: 'Skip to content',
   },
   hero: {
     hello: 'Hello',

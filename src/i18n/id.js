@@ -15,6 +15,7 @@ const id = {
     theme: 'Ganti tema terang/gelap',
     lang: 'Ganti bahasa',
     home: 'Kembali ke atas',
+    skip: 'Langsung ke konten',
   },
   hero: {
     hello: 'Halo',

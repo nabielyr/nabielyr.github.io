@@ -75,7 +75,7 @@ A few notes:
 - **CV.** Put the PDF in `public/cv/` and set `cv` in `profile.js` to its path, e.g. `'/cv/Curriculum Vitae Muhammad Nabiel Yandra.pdf'`. The download button shows up on its own.
 - **Text.** Anything that appears on the page should be added to both `en.js` and `id.js`.
 
-Every push to `main` is deployed to Vercel automatically.
+Every push to `main` is deployed to GitHub Pages automatically (`.github/workflows/deploy.yml`).
 
 ## Get in touch
 

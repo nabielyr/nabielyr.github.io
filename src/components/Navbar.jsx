@@ -78,6 +78,10 @@ export default function Navbar() {
 
   return (
     <>
+      <a href="#main-content" className={styles.skip}>
+        {t('nav.skip')}
+      </a>
+
       <motion.header
         className={styles.nav}
         animate={{ transform: hidden ? 'translateY(-100%)' : 'translateY(0%)' }}

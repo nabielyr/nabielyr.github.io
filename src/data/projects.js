@@ -77,7 +77,7 @@ export const projects = [
     image: '/projects/portfolio.webp', // Hoo asleep, as he is by day
     imageNight: '/projects/portfolio-night.webp', // shown in the dark theme: he's up at night
     github: 'https://github.com/nabielyr/nabielyr.github.io',
-    demo: 'https://nabielyr.github.io/',
+    demo: '', // you're already on it, so the cover goes to the code
     year: 2026,
   },
   {
