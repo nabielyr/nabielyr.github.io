@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { FiGithub, FiLinkedin } from 'react-icons/fi'
 import { useMediaQuery } from '../hooks/useMediaQuery'
-import { useLanguage } from '../context/contexts'
+import { useLanguage, useTheme } from '../context/contexts'
 import { profile } from '../data/profile'
 import { scrollToTarget } from '../lib/smoothScroll'
 import FlapTicker from '../components/FlapTicker'
 import TreatJar from '../components/TreatJar'
+import HeroSky from '../components/HeroSky'
 import { prepareOwl } from '../components/owl/loadOwl'
 import styles from './Hero.module.css'
 
@@ -52,6 +53,7 @@ const linkedin = profile.socials.find((s) => s.id === 'linkedin')
 
 export default function Hero() {
   const { t } = useLanguage()
+  const { theme } = useTheme()
   const reduceMotion = useReducedMotion()
   const fontReady = useFontReady()
   // Mount the 3D owl as soon as its code and textures are in (they load with
@@ -74,6 +76,9 @@ export default function Hero() {
   const [heroEl, setHeroEl] = useState(null)
   // the owl's spot next to the name; on wide screens its canvas runs on to the page's right edge
   const [owlSpot, setOwlSpot] = useState(null)
+  // the sky stays faint behind the intro text
+  const [introEl, setIntroEl] = useState(null)
+  const [nameEl, setNameEl] = useState(null)
   const time = useMalangTime()
   const [hoot, setHoot] = useState(null)
   const hootTimer = useRef(0)
@@ -113,9 +118,11 @@ export default function Hero() {
 
   return (
     <section id="home" ref={setHeroEl} className={`${styles.hero} ${fontReady ? styles.go : ''}`}>
+      <HeroSky start={fontReady} theme={theme} still={reduceMotion} host={heroEl} avoid={introEl} quiet={nameEl} />
+
       <div className={styles.top}>
         <div className={styles.text}>
-          <h1 className={styles.name} aria-label={profile.name}>
+          <h1 ref={setNameEl} className={styles.name} aria-label={profile.name}>
             <span className={styles.line} aria-hidden="true">
               <span className={`${styles.word} ${styles.accent}`}>Nabiel</span>
             </span>
@@ -126,7 +133,7 @@ export default function Hero() {
             </span>
           </h1>
 
-          <div className={styles.intro}>
+          <div ref={setIntroEl} className={styles.intro}>
             <p className={styles.lead}>
               <span className={styles.hello}>{t('hero.hello')} 👋</span> {t('hero.intro')}
             </p>
