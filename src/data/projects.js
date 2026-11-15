@@ -129,10 +129,10 @@ export const projects = [
     title: 'KanbAI',
     category: ['web-dev', 'ai-ml'],
     description: {
-      en: "A kanban board with a \"Chunk it\" button that asks an AI to break a big task into small, concrete subtasks you can edit before saving. The board, card details and Chunk it (Gemini, with Groq as a fallback) already work; accounts, rate limiting and deployment come next.",
-      id: "Papan kanban dengan tombol \"Chunk it\" yang meminta AI memecah tugas besar jadi subtask kecil dan konkret, yang bisa diedit dulu sebelum disimpan. Papan, detail kartu, dan Chunk it (Gemini, dengan Groq sebagai cadangan) sudah jalan; login, rate limiting, dan deploy menyusul.",
+      en: "A kanban board with a \"Chunk it\" button that asks an AI (Gemini, with Groq as a fallback) to break a big task into small subtasks you can edit before saving. Logins, boards synced to your account, rate limits, dark mode and a mobile layout are done; the public deploy comes next.",
+      id: "Papan kanban dengan tombol \"Chunk it\" yang meminta AI (Gemini, dengan Groq sebagai cadangan) memecah tugas besar jadi subtask kecil yang bisa diedit dulu sebelum disimpan. Login, papan yang tersimpan di akun, rate limiting, mode gelap, dan tampilan mobile sudah jadi; tinggal deploy publiknya.",
     },
-    tech: ['Next.js', 'TypeScript', 'dnd-kit', 'Gemini API'],
+    tech: ['Next.js', 'TypeScript', 'Supabase', 'Gemini API'],
     image: '',
     github: 'https://github.com/nabielyr/kanbai',
     demo: '',
