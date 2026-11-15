@@ -43,3 +43,9 @@ export function scrollToTarget(target, offset = -72) {
   const el = typeof target === 'string' ? document.querySelector(target) : target
   el?.scrollIntoView({ behavior: 'smooth' })
 }
+
+/** Move the page by dy at once (no glide), e.g. to keep a button in place when the content above it shrinks. */
+export function jumpBy(dy) {
+  if (lenis) lenis.scrollTo(lenis.scroll + dy, { immediate: true, force: true })
+  else window.scrollBy(0, dy)
+}

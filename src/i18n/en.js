@@ -86,6 +86,8 @@ const en = {
     coursework: 'Coursework',
     view: 'View',
     more: 'More on GitHub',
+    showMore: 'Show {n} more',
+    showLess: 'Show fewer',
   },
   contact: {
     kicker: 'Contact',

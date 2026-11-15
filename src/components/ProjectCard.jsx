@@ -16,7 +16,7 @@ function TypeCover({ title }) {
  * One cell of the work grid: cover, title with icon links to the code and the
  * live demo, year and categories, a short description and the stack.
  */
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, delay = 0 }) {
   const { t, pick } = useLanguage()
   const primary = project.demo || project.github
   const building = project.status === 'in-progress'
@@ -25,7 +25,11 @@ export default function ProjectCard({ project }) {
     .join(' · ')
 
   return (
-    <article id={`project-${project.id}`} className={styles.card}>
+    <article
+      id={`project-${project.id}`}
+      className={styles.card}
+      style={delay ? { animationDelay: `${delay}s` } : undefined}
+    >
       <a
         className={styles.cover}
         href={primary}

@@ -138,9 +138,46 @@
   border-left: 1px solid var(--rule-strong);
 }
 
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-top: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+/* Show n more / Show fewer: an outline pill like the hero buttons */
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.3rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-pill);
+  transition: background-color var(--dur-fast), color var(--dur-fast);
+}
+
+.toggle:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.toggle span {
+  display: inline-block;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.toggleOpen span {
+  transform: rotate(180deg);
+}
+
 .more {
   display: inline-block;
-  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  margin-left: auto;
   font-weight: 600;
   text-decoration: underline;
   text-decoration-thickness: 1px;

@@ -86,6 +86,8 @@ const id = {
     coursework: 'Tugas kuliah',
     view: 'Lihat',
     more: 'Lainnya di GitHub',
+    showMore: 'Lihat {n} lagi',
+    showLess: 'Tampilkan lebih sedikit',
   },
   contact: {
     kicker: 'Kontak',
