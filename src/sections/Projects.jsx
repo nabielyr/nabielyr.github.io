@@ -14,8 +14,11 @@ const lastBuild = finished[0]
 const building = inProgress[0]
 const github = profile.socials.find((s) => s.id === 'github')
 
-// one grid: finished work first, then whatever is still being built
-const ordered = [...finished, ...inProgress]
+// one grid: finished work first, then whatever is still being built. Projects
+// with a `featured` number lead the grid in that order; the rest keep the
+// array's order (newest first), which is also what "Last built" follows.
+const rank = (p) => p.featured ?? 99
+const ordered = [...[...finished].sort((a, b) => rank(a) - rank(b)), ...inProgress]
 const inCategory = (id) => (id === 'all' ? ordered : ordered.filter((p) => categoriesOf(p).includes(id)))
 // two rows of the 3-column grid; the rest wait behind "Show n more"
 const FIRST = 6

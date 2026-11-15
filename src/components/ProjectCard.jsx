@@ -40,7 +40,13 @@ export default function ProjectCard({ project, delay = 0 }) {
       >
         {project.image ? (
           <>
-            <img src={project.image} alt="" loading="lazy" width="1200" height="750" />
+            <img
+              src={project.image}
+              alt={`${project.title}, ${t('projects.cover')}`}
+              loading="lazy"
+              width="1200"
+              height="750"
+            />
             {project.imageNight && (
               <img className={styles.night} src={project.imageNight} alt="" loading="lazy" width="1200" height="750" />
             )}

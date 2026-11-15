@@ -24,7 +24,7 @@
     <link rel="canonical" href="https://nabielyr.github.io/" />
     <meta
       name="description"
-      content="Muhammad Nabiel Yandra is an Information Systems student at Brawijaya University and an aspiring Machine Learning Engineer based in Malang, Indonesia. Open to internships and freelance work."
+      content="Muhammad Nabiel Yandra is an Information Systems student at Brawijaya University in Malang, Indonesia, who turns messy data into models, analyses and small web apps. Open to internships and freelance work."
     />
     <meta name="keywords" content="Muhammad Nabiel Yandra, Nabiel, Portfolio, Machine Learning, Data Science, Information Systems, Brawijaya University, Malang" />
     <meta name="author" content="Muhammad Nabiel Yandra" />
@@ -45,12 +45,49 @@
     <meta name="twitter:description" content="Information Systems student at Brawijaya University, based in Malang, Indonesia. Projects in machine learning, data science and the web." />
     <meta name="twitter:image" content="https://nabielyr.github.io/og-hoo.png" />
 
+    <!-- Who this site is about, for search engines. Keep it in step with src/data/profile.js -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Muhammad Nabiel Yandra",
+        "alternateName": "Nabiel Yandra",
+        "url": "https://nabielyr.github.io/",
+        "image": "https://nabielyr.github.io/images/nabiel-800.webp",
+        "description": "Information Systems student at Brawijaya University who works with machine learning, data science and the web.",
+        "homeLocation": { "@type": "Place", "name": "Malang, Indonesia" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Brawijaya University" },
+        "sameAs": [
+          "https://github.com/nabielyr",
+          "https://linkedin.com/in/nabiel-yandra",
+          "https://www.instagram.com/nabielyr/"
+        ]
+      }
+    </script>
+
     <!-- Self-hosted fonts (src/styles/fonts.css): Big Shoulders Display (display), Instrument Sans (text) -->
     <link rel="preload" href="/fonts/big-shoulders-display-800-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <div id="root"></div>
+    <!-- Shown only where scripts don't run. Keep it in step with src/data/profile.js -->
+    <noscript>
+      <div style="max-width: 40rem; margin: 0 auto; padding: 3rem 1.5rem; font: 1rem/1.6 system-ui, sans-serif; color: #13213f">
+        <h1 style="font-size: 2rem; line-height: 1.1">Muhammad Nabiel Yandra</h1>
+        <p style="margin-top: 1rem">
+          Information Systems student at Brawijaya University in Malang, Indonesia. I take messy data and turn it
+          into models, analyses and small web apps. Open to internships and freelance work.
+        </p>
+        <p style="margin-top: 1rem">This site is built with JavaScript, so turn it on to see the projects. Until then:</p>
+        <p style="margin-top: 1rem">
+          <a style="text-decoration: underline" href="https://github.com/nabielyr">GitHub</a> ·
+          <a style="text-decoration: underline" href="https://linkedin.com/in/nabiel-yandra">LinkedIn</a> ·
+          <a style="text-decoration: underline" href="mailto:nabielyandra@gmail.com">nabielyandra@gmail.com</a> ·
+          <a style="text-decoration: underline" href="/cv/Curriculum%20Vitae%20Muhammad%20Nabiel%20Yandra.pdf">CV (PDF)</a>
+        </p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

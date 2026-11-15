@@ -19,7 +19,7 @@ const en = {
   },
   hero: {
     hello: 'Hello',
-    intro: "I'm Muhammad Nabiel Yandra, an Information Systems student at Brawijaya University and an aspiring Machine Learning Engineer.",
+    intro: "I'm Muhammad Nabiel Yandra, an Information Systems student at Brawijaya University. I take messy data and turn it into models, analyses and small web apps.",
     location: 'Based in Malang, Indonesia',
     status: 'Open to internships & freelance',
     ctaWork: 'See my work',
@@ -87,6 +87,7 @@ const en = {
     code: 'Source code',
     coursework: 'Coursework',
     view: 'View',
+    cover: 'cover image',
     more: 'More on GitHub',
     showMore: 'Show {n} more',
     showLess: 'Show fewer',

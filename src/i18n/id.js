@@ -19,7 +19,7 @@ const id = {
   },
   hero: {
     hello: 'Halo',
-    intro: 'Saya Muhammad Nabiel Yandra, mahasiswa Sistem Informasi di Brawijaya University dan calon Machine Learning Engineer.',
+    intro: 'Saya Muhammad Nabiel Yandra, mahasiswa Sistem Informasi di Brawijaya University. Saya mengubah data yang berantakan jadi model, analisis, dan aplikasi web kecil.',
     location: 'Tinggal di Malang, Indonesia',
     status: 'Terbuka untuk magang & freelance',
     ctaWork: 'Lihat karya saya',
@@ -87,6 +87,7 @@ const id = {
     code: 'Kode sumber',
     coursework: 'Tugas kuliah',
     view: 'Lihat',
+    cover: 'gambar sampul',
     more: 'Lainnya di GitHub',
     showMore: 'Lihat {n} lagi',
     showLess: 'Tampilkan lebih sedikit',

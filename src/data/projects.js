@@ -19,8 +19,11 @@
  *  - coursework  optional: true for a university assignment (shows a "Coursework" tag)
  *  - status      optional: 'in-progress' adds an "In progress" badge and the
  *                "Currently building" link; it is listed after finished work
+ *  - featured    optional number: featured projects open the grid, lowest first
+ *                (1, 2, 3...). Everything else follows in the order of this file.
  *
- *  Newest first. The first finished project is the "Last built" link.
+ *  Newest first. The first finished project is the "Last built" link, whatever
+ *  the grid shows first.
  */
 export const projects = [
   {
@@ -41,6 +44,7 @@ export const projects = [
     id: 'what-gets-starred',
     title: 'What Gets Starred',
     category: 'data-science',
+    featured: 2,
     description: {
       en: "What makes a GitHub repo popular? 4,000 repos sampled through the GitHub API, analyzed and turned into a Streamlit dashboard that can also score your README. Almost half of the repos with 1,000+ stars turned out to be unmaintained.",
       id: "Apa yang membuat repo GitHub populer? 4.000 repo diambil lewat GitHub API, dianalisis, lalu dijadikan dashboard Streamlit yang juga bisa menilai README kamu. Ternyata hampir setengah repo dengan 1.000+ star sudah tidak dirawat lagi.",
@@ -84,13 +88,14 @@ export const projects = [
     id: 'signspeak',
     title: 'SignSpeak',
     category: 'ai-ml',
+    featured: 1,
     description: {
       en: "Reads American Sign Language from a webcam in real time, turns the signs into a sentence and reads it out loud. MediaPipe tracks the hands and a Random Forest recognizes each pose.",
       id: "Membaca American Sign Language dari webcam secara real-time, menyusunnya jadi kalimat, lalu membacakannya. MediaPipe melacak tangan dan Random Forest mengenali tiap pose.",
     },
     tech: ['Python', 'MediaPipe', 'scikit-learn', 'FastAPI'],
     image: '/projects/signspeak.webp',
-    github: 'https://github.com/nabielyr/SignLanguage',
+    github: 'https://github.com/nabielyr/signspeak',
     demo: '',
     year: 2026,
   },
@@ -98,13 +103,14 @@ export const projects = [
     id: 'hantavirus-sentiment',
     title: 'Hantavirus Sentiment Analysis',
     category: ['data-science', 'ai-ml'],
+    featured: 3,
     description: {
       en: "Sentiment analysis of 779 YouTube comments about hantavirus with a fine-tuned IndoBERT. Almost 74% were negative, many of them political jokes about \"tikus\".",
       id: "Analisis sentimen 779 komentar YouTube tentang hantavirus dengan IndoBERT yang di-fine-tune. Hampir 74% bernada negatif, banyak di antaranya candaan politik soal \"tikus\".",
     },
     tech: ['Python', 'IndoBERT', 'Hugging Face', 'YouTube API'],
     image: '/projects/indobert-hantavirus.webp',
-    github: 'https://github.com/nabielyr/IndoBERT-for-Hantavirus-Sentiment-Analysis',
+    github: 'https://github.com/nabielyr/indobert-hantavirus-sentiment',
     coursework: true,
     demo: '',
     year: 2026,
@@ -119,7 +125,7 @@ export const projects = [
     },
     tech: ['Python', 'Pandas', 'Matplotlib', 'Seaborn'],
     image: '/projects/tech-layoffs.webp',
-    github: 'https://github.com/nabielyr/Tech-Layoffs-Trend-Analysis',
+    github: 'https://github.com/nabielyr/tech-layoffs-trend-analysis',
     coursework: true,
     demo: '',
     year: 2026,
